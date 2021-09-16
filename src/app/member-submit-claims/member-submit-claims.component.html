@@ -1,0 +1,106 @@
+<div class="container  register-form">
+    <div class="flex-row ">
+        <div class="col-md-12">
+            <h2>Submit Claims</h2>
+
+        </div>
+    </div>
+    <div class="flex-row form">
+        <div class="serch-item ">
+
+            <input type="text" (keyup)="getMemberIdList($event)" (change)="onChange($event)" list="memberIds" />
+            <datalist id="memberIds">
+                <option  *ngFor="let id of membersIdList" (value)="id">{{id}}</option>
+            </datalist>
+
+        </div>
+        <div class="form-content">
+
+            <form [formGroup]="memberClaimForm" (ngSubmit)="onSubmit()">
+                <div class="flex-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Member Id<span class="mandatory text-danger font-weight-bold">*</span></label>
+                            <input type="text" class="form-control" name="memberId" id="memberId" formControlName="memberId" readonly="true" />
+                            <div *ngIf="f.memberId.invalid && (f.memberId?.dirty ||f.memberId?.touched || submitted)" class="alert alert-danger">
+                                Member Id is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>LastName <span class="mandatory text-danger font-weight-bold">*</span></label>
+                            <input type="text" class="form-control" name="cLastName" id="cLastName" formControlName="cLastName" readonly="true" />
+                            <div *ngIf="f.cLastName.invalid &&(f.memberId?.dirty || f.cLastName.touched || submitted)" class="alert alert-danger">
+                                Last Name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>First Name<span class="mandatory text-danger">*</span></label>
+                            <input type="text" class="form-control" name="cFirstName" id="cFirstname" formControlName="cFirstName" readonly="true" />
+                            <div *ngIf="f.cFirstName.invalid && (f.cFirstName?.dirty ||f.cFirstName.touched || submitted)" class="alert alert-danger">
+                                First Name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth<span class="mandatory text-danger">*</span></label>
+                            <input type="date" class="form-control" name="cDob" id="cDob" formControlName="cDob" readonly="true" />
+                            <div *ngIf="f.cDob.invalid &&(f.cDob?.dirty || f.cDob?.touched || submitted)" class="alert alert-danger">
+                                Date of Birth is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date of Admission<span class="mandatory text-danger">*</span></label>
+                            <input type="date" class="form-control" [(ngModel)]="cAdmissionDate" name="cAdmissionDate" id="cAdmissionDate" formControlName="cAdmissionDate" placeholder="Date of Admission is here" value="" />
+                            <div *ngIf="f.cAdmissionDate.invalid &&(f.cAdmissionDate?.dirty || f.cAdmissionDate?.touched || submitted)" class="alert alert-danger">
+                                Date of Admission is required
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label>Total Bill Amount<span class="mandatory text-danger">*</span></label>
+                            <input type="number" class="form-control" name="cAmount" id="cAmount" formControlName="cAmount" placeholder="Total Bill Amount is here" value="" />
+                            <div *ngIf="f.cAmount.invalid &&(f.cAmount?.dirty || f.cAmount.touched || submitted)" class="alert alert-danger">
+                                Total Bill Amount is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date of Discharge<span class="mandatory text-danger">*</span></label>
+                            <input type="date" class="form-control" [(ngModel)]="cDischargeDate" name="cDischargeDate" id="cDischargeDate" formControlName="cDischargeDate" placeholder="Date of Discharge is here" value="" />
+                            <div *ngIf="f.cDischargeDate?.invalid">
+                                <div *ngIf="f.cDischargeDate.errors?.required&&(f.cDischargeDate?.touched || submitted)" class="alert alert-danger">
+                                    Date of Discharge is required
+                                </div>
+                                <div *ngIf="f.cDischargeDate.errors?.isDateValid && (f.cAmount?.dirty ||f.cDischargeDate?.touched || submitted)" class="alert alert-danger">
+                                    Date of Discharge must be less than Date of Admission
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Provider Name<span class="mandatory text-danger">*</span></label>
+                            <input type="text" class="form-control" name="cProviderName" id="cProviderName" formControlName="cProviderName" placeholder="Provider Name is here" value="" />
+                            <div *ngIf="f.cProviderName?.invalid && (f.cAmount?.dirty ||f.cProviderName?.touched || submitted)" class="alert alert-danger">
+                                Provider Name is required
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary form-content">Submit Claim</button>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 ">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="text-center">Member Claims</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class=" col-md-12 col-lg-12 ">
+                            <table class="table table-bordered">
+                                <tbody>
+
+                                    <tr class="bg-primary">
+                                        <td>Claim Id</td>
+                                        <td>Member/Claim Id</td>
+                                        <td>FirstName</td>
+                                        <td>LastName</td>
+                                        <td>Date of Admission</td>
+                                        <td>Date of Discharge</td>
+                                        <td>Date of Birth</td>
+
+                                        <td>Provider</td>
+                                        <td>Amount</td>
+                                    </tr>
+
+                                    <tr *ngFor="let claim of claimsList;">
+                                        <td>{{claim.claimId}}</td>
+                                        <td>{{claim.memberId}}</td>
+                                        <td>{{claim.cFirstName}}</td>
+                                        <td>{{claim.cLastName}}</td>
+                                        <td>{{claim.cAdmissionDate | date:'d/M/yyyy'}}</td>
+                                        <td>{{claim.cDischargeDate | date:'d/M/yyyy'}}</td>
+                                        <td>{{claim.cDob | date:'M/d/yyyy'}}</td>
+                                        <td>{{claim.cProviderName}}</td>
+                                        <td>{{claim.cAmount}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

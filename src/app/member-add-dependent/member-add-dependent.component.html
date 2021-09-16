@@ -1,0 +1,54 @@
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p></p>
+        </div>
+        <div class="form-content col-md-offset-3">
+            <form [formGroup]="dependentForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+
+                    <div class="col-md-6 ">
+                        <div class="form-group">
+                            <label>Firt Name<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" name="dependentFirstName" id="dependentFirstName" formControlName="dependentFirstName" />
+
+                            <div *ngIf="f.dependentFirstName?.invalid && f.dependentFirstName?.touched && submitted" class="alert alert-danger">
+                                Firt Name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <input type="hidden" class="form-control" name="memberId" id="memberId" value="{{memberId}}" [(ngModel)]="memberId" formControlName="memberId" />
+
+                            <div *ngIf="f.memberId?.invalid && f.memberId?.touched && submitted" class="alert alert-danger">
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Last Name<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" name="dependentLastName" id="dependentLastName" formControlName="dependentLastName" />
+                            <div *ngIf="f.dependentLastName?.invalid && f.dependentLastName?.touched && submitted" class="alert alert-danger">
+                                Last Name is required
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>DOB<span class="mandatory">*</span></label>
+                            <input type="date" class="form-control" [(ngModel)]="dependentDOB" name="dependentDOB" id="dependentDOB" formControlName="dependentDOB" />
+                            <div *ngIf="f.dependentDOB?.invalid && f.dependentDOB?.touched && submitted" class="alert alert-danger">
+                                DOB is required
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Add Dependent</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>

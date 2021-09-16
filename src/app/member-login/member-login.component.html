@@ -1,0 +1,56 @@
+<div class="container">
+
+    <form class="well form-horizontal" [formGroup]="memberLoginForm" (ngSubmit)="onLogin()" novalidate id="contact_form">
+        <fieldset>
+            <legend>
+                <h2 class="text-center"><b>Member Login</b></h2>
+            </legend><br>
+            <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>
+                <div class="col-md-4 inputGroupContainer" [ngClass]="{'has-error': f.email.errors && submitted}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input name="email" placeholder="email" class="form-control" type="text"
+                            formControlName="email">
+                    </div>
+                    <div class="text-danger" *ngIf="!f.email?.valid && (f.email?.dirty ||f.email?.touched||submitted)">
+                        <div [hidden]="!f.email.errors?.required">
+                            email is required
+                        </div>
+                        <div [hidden]="!f.email.errors?.pattern">
+                            Invalid email Id
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Password</label>
+                <div class="col-md-4 inputGroupContainer" [ngClass]="{'has-error': f.password.errors&& submitted}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="user_password" placeholder="Password" class="form-control" type="password"
+                            formControlName="password">
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="!f.password?.valid && (f.password?.dirty ||f.password?.touched|| submitted)">
+                        <div [hidden]="!f.password.errors?.required">
+                            password is required
+                        </div>
+                        <div [hidden]="!f.password.errors?.pattern">
+                            Invalid password
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4"><br>
+                    <button type="submit" class="btn btn-warning">Login </button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
